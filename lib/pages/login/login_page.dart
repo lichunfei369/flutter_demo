@@ -23,9 +23,9 @@ class _LoginPageState extends State<LoginPage> {
   // 表单的全局key，用于验证表单
   final _formKey = GlobalKey<FormState>();
   // 邮箱输入框的控制器
-  final _emailController = TextEditingController();
+  final _emailController = TextEditingController(text: 'test@example.com');
   // 密码输入框的控制器
-  final _passwordController = TextEditingController();
+  final _passwordController = TextEditingController(text: 'password123');
   // 标记密码是否可见
   bool _isPasswordVisible = false;
   // 标记是否正在登录
