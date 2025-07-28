@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_icons.dart';
 import '../constants/app_strings.dart';
@@ -29,39 +30,35 @@ class _MainTabPageState extends State<MainTabPage> {
     ),
   ];
 
-  final List<Widget> _pages = const [
-    HomePage(),
-    ProfilePage(),
-  ];
+  final List<Widget> _pages = const [HomePage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+      body: IndexedStack(index: _currentIndex, children: _pages),
+      bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-        items: _tabs.map((tab) {
-          return BottomNavigationBarItem(
-            icon: SvgPicture.asset(tab.icon, width: 24, height: 24, color: AppColors.tabInactive),
-            activeIcon: SvgPicture.asset(tab.activeIcon, width: 24, height: 24, color: AppColors.tabActive),
-            label: tab.title,
-          );
-        }).toList(),
-        selectedItemColor: AppColors.tabActive,
-        unselectedItemColor: AppColors.tabInactive,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        enableFeedback: false,
-        mouseCursor: SystemMouseCursors.basic,
+        items:
+            _tabs.map((tab) {
+              final isSelected = _tabs.indexOf(tab) == _currentIndex;
+              return SalomonBottomBarItem(
+                icon: SvgPicture.asset(
+                  isSelected ? tab.activeIcon : tab.icon,
+                  width: 24,
+                  height: 24,
+                  color:
+                      isSelected ? AppColors.tabActive : AppColors.tabInactive,
+                ),
+                title: Text(tab.title),
+                selectedColor: AppColors.tabActive,
+                unselectedColor: AppColors.tabInactive,
+              );
+            }).toList(),
       ),
     );
   }
