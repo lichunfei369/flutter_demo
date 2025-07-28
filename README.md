@@ -239,7 +239,47 @@ decoration: BoxDecoration(
 - 表单验证反馈：显示错误信息
 - 自定义消息提示：使用CustomMessage组件
 
-## 6. 总结
+## 6. Dio网络请求库使用
+
+项目中使用了Dio作为HTTP客户端，主要特点包括：
+
+1. **基础配置**：
+   - 支持GET/POST/PUT/DELETE等HTTP方法
+   - 支持请求/响应拦截器
+   - 支持文件上传/下载
+   - 支持请求取消
+
+2. **示例代码**（来自home_page.dart）：
+```dart
+// 发起GET请求到汉堡API
+final response = await http.get(
+  Uri.parse('https://free-food-menus-api-two.vercel.app/burgers'),
+  headers: {'Content-Type': 'application/json'},
+);
+
+// 处理响应
+if (response.statusCode == 200) {
+  List<dynamic> burgers = jsonDecode(response.body);
+  // 更新UI状态
+  setState(() {
+    _burgers = burgers;
+    _isLoading = false;
+  });
+} else {
+  // 处理错误
+  setState(() {
+    _isLoading = false;
+    _errorMessage = '请求失败：状态码 ${response.statusCode}';
+  });
+}
+```
+
+3. **最佳实践**：
+   - 封装网络请求层，避免业务代码直接调用Dio
+   - 统一错误处理
+   - 使用拦截器实现日志打印、认证等通用功能
+
+## 7. 总结
 
 本项目展示了Flutter应用开发的多个核心概念和最佳实践，包括：
 
