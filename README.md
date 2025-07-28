@@ -281,6 +281,8 @@ if (response.statusCode == 200) {
 
 ## 7. 总结
 
+![Demo截图](assets/demo.png)
+
 本项目展示了Flutter应用开发的多个核心概念和最佳实践，包括：
 
 1. **组件化开发**：将UI拆分为可复用的组件
