@@ -23,14 +23,9 @@ class _MainTabPageState extends State<MainTabPage> {
       icon: AppIcons.home,
       activeIcon: AppIcons.homeActive,
     ),
-    TabItem(
-      title: AppStrings.profile,
-      icon: AppIcons.profile,
-      activeIcon: AppIcons.profileActive,
-    ),
   ];
 
-  final List<Widget> _pages = const [HomePage(), ProfilePage()];
+  final List<Widget> _pages = const [HomePage()];
 
   @override
   Widget build(BuildContext context) {

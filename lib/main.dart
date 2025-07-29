@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/pages/login/login_page.dart';
+import 'navigation/app_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.light,
-      home: const LoginPage(),
+      initialRoute: AppNavigation.login,
+      routes: AppNavigation.routes,
     );
   }
 }

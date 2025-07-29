@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../navigation/app_navigation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -106,15 +107,11 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.orange,
         foregroundColor: Colors.white,
         actions: [
-          // 刷新按钮
+          // 个人中心按钮
           IconButton(
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.person),
             onPressed: () {
-              setState(() {
-                _isLoading = true;
-                _errorMessage = null;
-              });
-              fetchBurgers();
+              AppNavigation.goToProfile(context);
             },
           ),
         ],

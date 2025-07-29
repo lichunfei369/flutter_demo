@@ -10,6 +10,7 @@ import 'package:flutter_demo/pages/login/widgets/password_field.dart';
 import 'package:flutter_demo/pages/login/widgets/social_login_section.dart';
 import 'package:flutter_demo/pages/login/widgets/custom_message.dart';
 import '../main_tab_page.dart';
+import '../../navigation/app_navigation.dart';
 
 // 登录页面，包含UI和业务逻辑
 class LoginPage extends StatefulWidget {
